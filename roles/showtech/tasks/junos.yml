@@ -20,5 +20,3 @@
       - "{{ show_tech_command }} | save showtech.txt"
       - 'start shell command "tftp -JP showtech.txt {{tftpserver}}:showtech_{{swname}}_{{showtech_filename}}"'
       - "file delete showtech.txt"
-    provider: "{{ login_info }}"
-  failed_when: false

@@ -15,6 +15,9 @@ Network Oses
 This playbook *does not require an Ansible inventory* and captures the detailed network
 information from only a single device.
 
+Works with Ansible 2.4 and higher
+
+
 ## User Input (Extra Variables)
 
 * ``swname``: switch hostname or IP
@@ -36,10 +39,6 @@ Example:
 
 ## Example Playbook Execution
 
-There are 2 capture_showtech files.
-
-* ``capture_showtech_2.4.yml``: For Ansible 2.4
-* ``capture_showtech_2.5.yml``: For Ansible 2.5 and higher
 
 This repository provides 4 example user input variable files.
 
@@ -56,13 +55,8 @@ ansible-playbook capture-showtech.yml -e @test_nxos_vars.yml
 Example2: IOS example using -e options
 
 ```
-ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e username=admin -e password=cisco -e tftpserver=10.200.1.1
+ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e user=admin -e passwd=cisco -e tftpserver=10.200.1.1
 ```
-
-# TODO
-
-Add support for the new network_cli plugin module in Ansible 2.5, since the
-provider method is going away at some point.
 
 
 License

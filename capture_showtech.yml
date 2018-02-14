@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: check user input (extra variables) existence
+      assert:
+        that: "{{ item }} is defined"
+        msg:  "{{ item }} must be defined as a user input (extra variable)"
+      with_items:
+        - swname
+        - tftpserver
+        - ostype
+        - user
+        - passwd
+
+    - name: check that ostype is correct
+      assert:
+        that: "ostype == 'ios' or ostype == 'nxos' or ostype == 'eos' or ostype =='junos'"
+        msg: "os type must either be 'ios', 'eos, 'nxos' or 'junos'"
+
+    - name: add switch to inventory on the fly
+      add_host:
+      args:
+        name: "{{ swname }}"
+        ansible_host: "{{ swname }}"
+        ansible_password: "{{ passwd }}"
+        ansible_user: "{{ user }}"
+        ansible_network_os: "{{ostype }}"
+      no_log: True
+
+- hosts: "{{ swname }}"
+  connection: network_cli
+  gather_facts: no
+  roles:
+    - role: showtech
+

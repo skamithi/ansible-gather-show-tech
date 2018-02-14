@@ -9,4 +9,3 @@
   ios_command:
     commands:
       - "{{ show_tech_command }} | redirect tftp://{{tftpserver}}/showtech_{{swname}}_{{ansible_date_time.iso8601}}.txt"
-    provider: "{{ login_info }}"

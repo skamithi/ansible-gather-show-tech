@@ -1,6 +1,12 @@
 ---
+- name: do not run this role if the version of ansible is wrong
+  assert:
+    that: "ansible_version is defined and (ansible_version.full | version_compare('2.5', '>='))"
+    msg: "Requires Ansible 2.5 and higher"
+
 - name: get the timestamp so that the show techs can be timestamped
   setup:
     filter: ansible_date_time
+  delegate_to: localhost
 
 - include_tasks: "{{ ansible_network_os }}.yml"
