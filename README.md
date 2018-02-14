@@ -54,6 +54,12 @@ Example2: IOS example using -e options
 ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e username=admin -e password=cisco -e tftpserver=10.200.1.1
 ```
 
+# TODO
+
+Add support for the new network_cli plugin module in Ansible 2.5, since the
+provider method is going away at some point.
+
+
 License
 -------
 
