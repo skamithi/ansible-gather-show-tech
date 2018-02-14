@@ -1,0 +1,14 @@
+---
+- name: set show tech command. for debug purposes this can be changed
+  set_fact:
+    show_tech_command: "show tech"
+  when: show_tech_command is not defined
+
+
+- name: |
+    call show tech and redirect to a tftp server
+  eos_command:
+    commands:
+      - "{{ show_tech_command }} | redirect tftp://{{tftpserver}}/showtech_{{swname}}_{{ansible_date_time.iso8601}}.txt"
+    authorize: yes
+    provider: "{{ login_info }}"
