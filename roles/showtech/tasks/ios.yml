@@ -8,5 +8,5 @@
 - name: run show tech command and redirect the output to a tftp server
   ios_command:
     commands:
-      - "{{ show_tech_command }} | redirect tftp://{{tftpserver}}/showtech_{{swname}}.txt"
+      - "{{ show_tech_command }} | redirect tftp://{{tftpserver}}/showtech_{{swname}}_{{ansible_date_time.iso8601}}.txt"
     provider: "{{ login_info }}"

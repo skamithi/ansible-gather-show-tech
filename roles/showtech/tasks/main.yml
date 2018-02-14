@@ -1,2 +1,6 @@
 ---
+- name: get the timestamp so that the show techs can be timestamped
+  setup:
+    filter: ansible_date_time
+
 - include_tasks: "{{ ansible_network_os }}.yml"

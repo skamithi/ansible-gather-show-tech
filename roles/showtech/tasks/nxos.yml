@@ -16,6 +16,6 @@
     commands:
       - "delete showtech.txt no-prompt"
       - "{{ show_tech_command }} >> showtech.txt"
-      - "copy showtech.txt tftp://{{tftpserver}}/showtech_{{swname}}.txt vrf management"
+      - "copy showtech.txt tftp://{{tftpserver}}/showtech_{{swname}}_{{ansible_date_time.iso8601}}.txt vrf management"
       - "delete showtech.txt no-prompt"
     provider: "{{ login_info }}"
