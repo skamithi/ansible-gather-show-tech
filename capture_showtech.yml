@@ -23,6 +23,7 @@
   connection: local
   gather_facts: no
   vars:
+    ansible_network_os: "{{ os_type }}"
     login_info:
       host: "{{ swname }}"
       username: "{{ user }}"
