@@ -10,20 +10,20 @@
       with_items:
         - swname
         - tftpserver
-        - os_type
+        - ostype
         - user
         - passwd
 
-    - name: check that os_type is correct
+    - name: check that ostype is correct
       assert:
-        that: "os_type == 'ios' or os_type == 'nxos' or os_type == 'eos' or os_type =='junos'"
+        that: "ostype == 'ios' or ostype == 'nxos' or ostype == 'eos' or ostype =='junos'"
         msg: "os type must either be 'ios', 'eos, 'nxos' or 'junos'"
 
 - hosts: localhost
   connection: local
   gather_facts: no
   vars:
-    ansible_network_os: "{{ os_type }}"
+    ansible_network_os: "{{ ostype }}"
     login_info:
       host: "{{ swname }}"
       username: "{{ user }}"

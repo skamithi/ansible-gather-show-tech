@@ -20,7 +20,7 @@ information from only a single device.
 * ``swname``: switch hostname or IP
 * ``user``: user to log into network device
 * ``passwd``: password to log into the network device
-* ``os_type``: can be either 'nxos', 'eos', 'junos' or 'ios'
+* ``ostype``: can be either 'nxos', 'eos', 'junos' or 'ios'
 * ``tftpserver``: TFTP server hostname and IP
 
 
@@ -43,10 +43,16 @@ other to an IOS device.
 > simple command for demo purposes. By default the show tech command is properly
 > configured per the OS type.
 
-Example 1: NxOS
+Example 1: NxOS using a file with user input variables
 
 ```
-ansible-playbook capture-playbook.yml -e @test_nxos_vars.yml
+ansible-playbook capture-showtech.yml -e @test_nxos_vars.yml
+```
+
+Example2: IOS example using -e options
+
+```
+ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e username=admin -e password=cisco -e tftpserver=10.200.1.1
 ```
 
 License
