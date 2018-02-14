@@ -23,6 +23,17 @@ information from only a single device.
 * ``os_type``: can be either 'nxos', 'eos', 'junos' or 'ios'
 * ``tftpserver``: TFTP server hostname and IP
 
+
+## TFTP Output
+
+The file is stored with the following name:
+
+``showtech_{{ swname }}_{{ timestamp}}.txt``
+
+Example:
+
+``showtech_sw01_2018-02-14T03:30:49Z.txt``
+
 ## Example Playbook Execution
 
 This repository provides 2 examples. One to connect to a NxOS device and the
@@ -32,6 +43,11 @@ other to an IOS device.
 > simple command for demo purposes. By default the show tech command is properly
 > configured per the OS type.
 
+Example 1: NxOS
+
+```
+ansible-playbook capture-playbook.yml -e @test_nxos_vars.yml
+```
 
 License
 -------
