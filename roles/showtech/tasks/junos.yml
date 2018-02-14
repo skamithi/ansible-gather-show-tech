@@ -1,0 +1,24 @@
+---
+- name: set show tech command. for debug purposes this can be changed
+  set_fact:
+    show_tech_command: "request support information"
+  when: show_tech_command is not defined
+
+
+- name: transform timestamp on the filename to not have any ':'. Junos doesn't like this
+  set_fact:
+    showtech_filename: "showtech_{{swname}}_{{ansible_date_time.iso8601 | regex_replace(':', '_')}}.txt"
+
+- name: |
+    issue 3 commands to copy show tech output from JunOS to a tftp server
+    == save the network details to a showtech.txt file
+    == run a special command to tftp the file over to the tftp server
+    == delete the show tech file
+    == there is a small bug showing this task as failed. set failed_when to false
+  junos_command:
+    commands:
+      - "{{ show_tech_command }} | save showtech.txt"
+      - 'start shell command "tftp -JP showtech.txt {{tftpserver}}:showtech_{{swname}}_{{showtech_filename}}"'
+      - "file delete showtech.txt"
+    provider: "{{ login_info }}"
+  failed_when: false

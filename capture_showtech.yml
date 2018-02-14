@@ -16,8 +16,8 @@
 
     - name: check that os_type is correct
       assert:
-        that: "os_type == 'ios' or os_type == 'nxos' or os_type == 'eos'"
-        msg: "os type must either be 'ios' or 'nxos'"
+        that: "os_type == 'ios' or os_type == 'nxos' or os_type == 'eos' or os_type =='junos'"
+        msg: "os type must either be 'ios', 'eos, 'nxos' or 'junos'"
 
 - hosts: localhost
   connection: local
