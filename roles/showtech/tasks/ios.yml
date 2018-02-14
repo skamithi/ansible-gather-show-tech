@@ -1,0 +1,12 @@
+---
+- name: set show tech command. for debug purposes this can be changed
+  set_fact:
+    show_tech_command: "show tech"
+  when: show_tech_command is not defined
+
+
+- name: run show tech command and redirect the output to a tftp server
+  ios_command:
+    commands:
+      - "{{ show_tech_command }} | redirect tftp://{{tftpserver}}/showtech_{{swname}}.txt"
+    provider: "{{ login_info }}"

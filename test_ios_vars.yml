@@ -1,0 +1,6 @@
+os_type: ios
+tftpserver: 10.100.1.9
+swname: 10.100.1.14
+user: ansible
+passwd: cisco
+show_tech_command: show clock
