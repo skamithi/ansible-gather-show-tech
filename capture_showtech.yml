@@ -31,6 +31,9 @@
 
 - hosts: "{{ swname }}"
   connection: network_cli
+  vars:
+    # remove once other protocols are supported
+    remote_server_protocol: tftp
   gather_facts: no
   roles:
     - role: showtech

@@ -15,8 +15,14 @@ Network Oses
 This playbook *does not require an Ansible inventory* and captures the detailed network
 information from only a single device.
 
-Works with Ansible 2.4 and higher
+Works with Ansible 2.5 and higher
 
+
+## Supported Remote File servers
+
+* TFTP
+* FTP (WIP)
+* SCP (WIP)
 
 ## User Input (Extra Variables)
 
@@ -25,7 +31,7 @@ Works with Ansible 2.4 and higher
 * ``passwd``: password to log into the network device
 * ``ostype``: can be either 'nxos', 'eos', 'junos' or 'ios'
 * ``tftpserver``: TFTP server hostname and IP
-
+* ``remote_server_protocol: currently only set to  ``tftp``
 
 ## TFTP Output
 
