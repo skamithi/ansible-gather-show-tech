@@ -1,0 +1,21 @@
+---
+- name: set show tech command. for debug purposes this can be changed
+  set_fact:
+    show_tech_command: "show tech"
+  when: show_tech_command is not defined
+
+
+- name: |
+    3 in one command call
+    == delete any existing show tech file on bootflash
+    ==  save show tech output in a file on bootflash
+    == copy the file out to a tftp server
+    == delete any existing show tech file on bootflash
+
+  nxos_command:
+    commands:
+      - "delete showtech.txt no-prompt"
+      - "{{ show_tech_command }} >> showtech.txt"
+      - "copy showtech.txt tftp://{{tftpserver}}/showtech_{{swname}}.txt vrf management"
+      - "delete showtech.txt no-prompt"
+    provider: "{{ login_info }}"
