@@ -36,8 +36,7 @@ Example:
 
 ## Example Playbook Execution
 
-This repository provides 2 examples. One to connect to a NxOS device and the
-other to an IOS device.
+This repository provides 4 example user input variable files.
 
 > NOTE: these examples change the ``show_tech_command`` variable to capture
 > simple command for demo purposes. By default the show tech command is properly
