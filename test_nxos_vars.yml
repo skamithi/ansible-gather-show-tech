@@ -1,0 +1,5 @@
+os_type: nxos
+tftpserver: 10.100.1.9
+swname: 10.100.1.10
+user: admin
+passwd: admin

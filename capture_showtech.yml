@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: check user input (extra variables) existence
+      assert:
+        that: "{{ item }} is defined"
+        msg:  "{{ item }} must be defined as a user input (extra variable)"
+      with_items:
+        - swname
+        - tftpserver
+        - os_type
+        - user
+        - passwd
+
+    - name: check that os_type is correct
+      assert:
+        that: "os_type == 'ios' or os_type == 'nxos'"
+        msg: "os type must either be 'ios' or 'nxos'"
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    login_info:
+      host: "{{ swname }}"
+      username: "{{ user }}"
+      password: "{{ passwd }}"
+
+  roles:
+    - role: showtech
+
