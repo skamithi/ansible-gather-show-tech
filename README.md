@@ -36,6 +36,11 @@ Example:
 
 ## Example Playbook Execution
 
+There are 2 capture_showtech files.
+
+* ``capture_showtech_2.4.yml``: For Ansible 2.4
+* ``capture_showtech_2.5.yml``: For Ansible 2.5 and higher
+
 This repository provides 4 example user input variable files.
 
 > NOTE: these examples change the ``show_tech_command`` variable to capture
