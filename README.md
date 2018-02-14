@@ -31,7 +31,7 @@ Works with Ansible 2.5 and higher
 * ``passwd``: password to log into the network device
 * ``ostype``: can be either 'nxos', 'eos', 'junos' or 'ios'
 * ``tftpserver``: TFTP server hostname and IP
-* ``remote_server_protocol: currently only set to  ``tftp``
+* ``remote_server_protocol``: currently only set to  ``tftp``
 
 ## TFTP Output
 
