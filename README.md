@@ -12,7 +12,7 @@ Network Oses
 | JunOS          |request support information |
 
 
-This playbook *does not require an Ansible inventory* and captures the detailed network
+This playbook **does not require an Ansible inventory** and captures the detailed network
 information from only a single device.
 
 Works with Ansible 2.5 and higher
