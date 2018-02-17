@@ -1,1 +1,1 @@
-- include_tasks: "{{ remote_server_protocol}}/main.yml"
+- include_tasks: "{{ file_storage }}/main.yml"

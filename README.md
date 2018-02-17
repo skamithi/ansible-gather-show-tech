@@ -30,18 +30,24 @@ Works with Ansible 2.5 and higher
 * ``user``: user to log into network device
 * ``passwd``: password to log into the network device
 * ``ostype``: can be either 'nxos', 'eos', 'junos' or 'ios'
+* ``file_storage``: currently only set to  ``tftp``
+
+## File Storage Types
+
+### TFTP
+
+User Input (Extra Variables)
+
 * ``tftpserver``: TFTP server hostname and IP
-* ``remote_server_protocol``: currently only set to  ``tftp``
 
-## TFTP Output
-
-The file is stored with the following name:
+Output Filename
 
 ``showtech_{{ swname }}_{{ timestamp}}.txt``
 
 Example:
 
 ``showtech_sw01_2018-02-14T03:30:49Z.txt``
+
 
 ## Example Playbook Execution
 
@@ -55,13 +61,13 @@ This repository provides 4 example user input variable files.
 Example 1: NxOS using a file with user input variables
 
 ```
-ansible-playbook capture-showtech.yml -e @test_nxos_vars.yml
+ansible-playbook capture-showtech.yml -e @tests/test_nxos_vars.yml
 ```
 
 Example2: IOS example using -e options
 
 ```
-ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e user=admin -e passwd=cisco -e tftpserver=10.200.1.1
+ansible-playbook capture-showtech.yml -e ostype=ios -e swname=sw01 -e user=admin -e passwd=cisco -e tftpserver=10.200.1.1 -e file_storage=tftp
 ```
 
 

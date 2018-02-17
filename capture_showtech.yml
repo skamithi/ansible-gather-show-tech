@@ -9,14 +9,27 @@
         msg:  "{{ item }} must be defined as a user input (extra variable)"
       with_items:
         - swname
-        - tftpserver
         - ostype
         - user
         - passwd
+        - file_storage
+
+    - name: check file_storage setting
+      assert:
+        that: "file_storage == 'tftp'"
+        msg: "file_storage option is 'tftp'. more to come soon"
+
+    - name: check tftp options if tftp is specified
+      assert:
+          that: "{{ item }} is defined"
+          msg: "{{ item }} must be defined"
+      with_items:
+        - tftpserver
+      when: file_storage == 'tftp'
 
     - name: check that ostype is correct
       assert:
-        that: "ostype == 'ios' or ostype == 'nxos' or ostype == 'eos' or ostype =='junos'"
+        that: "ostype == 'ios' or ostype == 'nxos' or ostype == 'eos' or ostype == 'junos'"
         msg: "os type must either be 'ios', 'eos, 'nxos' or 'junos'"
 
     - name: add switch to inventory on the fly
@@ -31,9 +44,6 @@
 
 - hosts: "{{ swname }}"
   connection: network_cli
-  vars:
-    # remove once other protocols are supported
-    remote_server_protocol: tftp
   gather_facts: no
   roles:
     - role: showtech

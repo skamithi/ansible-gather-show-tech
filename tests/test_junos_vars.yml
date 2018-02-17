@@ -3,3 +3,4 @@ tftpserver: 192.168.2.1
 swname: 192.168.2.201
 user: ansible
 passwd: cisco1234
+file_storage: tftp

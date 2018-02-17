@@ -4,3 +4,4 @@ swname: 10.100.1.14
 user: ansible
 passwd: cisco
 show_tech_command: show clock
+file_storage: tftp
